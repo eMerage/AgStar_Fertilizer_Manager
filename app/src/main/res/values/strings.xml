@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Fertilizer Registration</string>
+
+
+    <string name="default_notification_channel_id">21555</string>
+    <string name="title_activity_visits">Visits Fertilizer</string>
+
+    <string name="title_activity_dealer">Dealer Fertilizer</string>
+    <string name="title_activity_products">Products Fertilizer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Agstar Cropcare</string>
+    <string name="nav_header_subtitle">Manager</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="menu_visits">Visits</string>
+    <string name="menu_dealer">Dealers</string>
+    <string name="menu_product">Product</string>
+    <string name="menu_logout">Logout</string>
+
+
+    <string name="dealer_tab_1">Unapproved</string>
+    <string name="dealer_tab_2">Approved</string>
+    <string name="dealer_tab_3">Assign</string>
+
+
+    <string name="products_tab_1">Assigned</string>
+    <string name="products_tab_2">Assign</string>
+
+</resources>

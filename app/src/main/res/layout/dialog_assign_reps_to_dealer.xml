@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativelayoutdailogmain"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@drawable/bg_dialog_background">
+
+
+    <TextView
+            android:id="@+id/montserratRegular1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/roboto"
+            android:layout_marginTop="10dp"
+            android:text="SELECT REP : "
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" android:layout_marginLeft="10dp"/>
+
+    <AutoCompleteTextView
+
+            android:hint="Search Rep"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:completionThreshold="1"
+            android:layout_below="@+id/montserratRegular1"
+            android:visibility="gone"
+            tools:fontFamily="@font/roboto"
+            android:id="@+id/autoCompleteTextView_dialog_assign_reps_to_dealers"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_assign_reps"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_below="@+id/autoCompleteTextView_dialog_assign_reps_to_dealers"
+            android:layout_height="match_parent"/>
+
+
+
+</RelativeLayout>
+
+
+

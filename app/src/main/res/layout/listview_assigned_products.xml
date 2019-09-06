@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                   android:id="@+id/card_view"
+                                   style="@style/CardViewStyle"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentTop="true"
+                                   android:layout_centerVertical="true"
+                                   android:layout_marginLeft="5dp"
+                                   android:layout_marginRight="5dp"
+                                   android:layout_marginTop="10dp"
+>
+
+    <RelativeLayout
+            android:id="@+id/relativeLayout_header_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="5dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_assing_products"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@+id/textview_rep_name"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="5dp"/>
+
+        <TextView
+                android:id="@+id/textview_rep_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativelayout_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Hashan Galagedara"
+                app:fontFamily="@font/roboto"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"/>
+
+        <RelativeLayout
+                android:id="@+id/relativelayout_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp">
+
+            <ImageView
+                    android:id="@+id/img_rep"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_profile_users"/>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+
