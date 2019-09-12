@@ -307,6 +307,7 @@ class DealerUnapprovedFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMar
                             } else {
                                 Toast.makeText(context as Activity, "Dealer update successfully ", Toast.LENGTH_LONG).show()
                                 userChangedLocation = null
+                                selectedImagefilePath = Uri.EMPTY
                                 getDealers()
                             }
 

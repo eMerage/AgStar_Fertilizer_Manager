@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingLogin = DataBindingUtil.setContentView(this, R.layout.activity_login)
         bindingLogin.lifecycleOwner = this
+
         vieModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         bindingLogin.login =vieModel
 

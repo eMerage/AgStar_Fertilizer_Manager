@@ -36,11 +36,9 @@ class LoginRepo(application: Application) {
     var apiInterface: APIInterface = ApiClient.client(application)
 
 
-    fun loginValidationRepo(
-        userName: MutableLiveData<String>,
-        password: MutableLiveData<String>
-    ): MutableLiveData<String> {
+    fun loginValidationRepo(userName: MutableLiveData<String>, password: MutableLiveData<String>): MutableLiveData<String> {
         var validationErrorMsg = MutableLiveData<String>()
+
         var error: String = when {
             !app.isConnectedToNetwork() -> "No internet connection !"
             userName.value.isNullOrEmpty() -> "Please Enter your User Name !"

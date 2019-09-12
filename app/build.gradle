@@ -15,8 +15,8 @@ android {
         applicationId "project.emarge.fertilizer_manager"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 8
-        versionName "1.0.DE8"
+        versionCode 9
+        versionName "1.0.DE9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
