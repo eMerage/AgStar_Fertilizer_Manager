@@ -34,8 +34,8 @@ open class VisitsViewModel(application: Application) : AndroidViewModel(applicat
     }
 
 
-    fun uploadeMissingImages(){
-        visitsRepository.getMissingImagesFromServer()
+    fun uploadeMissingImages():MutableLiveData<Int>{
+        return visitsRepository.getMissingImagesFromServer()
     }
 
 }

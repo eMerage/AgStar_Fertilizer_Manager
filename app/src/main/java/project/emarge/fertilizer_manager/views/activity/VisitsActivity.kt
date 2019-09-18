@@ -98,7 +98,11 @@ class VisitsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         if (permission != PackageManager.PERMISSION_GRANTED) {
             makeRequestStorage()
         } else {
-            bindingVisits.visits!!.uploadeMissingImages()
+            bindingVisits.visits!!.uploadeMissingImages().observe(this, Observer<Int> {
+                it?.let { result ->
+                    textview_imagecount.text = "Total images to upload  $result"
+                }
+            })
         }
 
 

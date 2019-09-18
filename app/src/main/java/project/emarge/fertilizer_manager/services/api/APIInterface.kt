@@ -43,6 +43,10 @@ interface APIInterface {
     abstract fun updateDealer(@Body dealerInfo: JsonObject): Observable<Dealer>
 
 
+    @POST("Dealer/UpdateDealerV2")
+    abstract fun updateDealerwithImageDetails(@Body dealerInfo: JsonObject): Observable<Dealer>
+
+
 
     @GET("User/GetRepsByAdminProductsAssigned")
     fun getRepsByAdminProductsAssigned(@Query("adminID") adminID: Int):  Observable<ArrayList<Rep>>

@@ -148,7 +148,9 @@ class VisitsRepo(application: Application) {
 
 
 
-    fun getMissingImagesFromServer() {
+    fun getMissingImagesFromServer() :MutableLiveData<Int>{
+
+        val imagecount = MutableLiveData<Int>()
 
         if (!app.isConnectedToNetwork()) {
 
@@ -174,14 +176,16 @@ class VisitsRepo(application: Application) {
                     }
 
                     override fun onComplete() {
+                        imagecount.postValue(listImages.size)
                         getImages(listImages)
                     }
                 })
 
         }
 
-    }
+        return  imagecount
 
+    }
 
     fun getImages(listImages: ArrayList<Image>) {
 

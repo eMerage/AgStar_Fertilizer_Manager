@@ -22,7 +22,7 @@ class DealerUnapprovedViewModel(application: Application) : AndroidViewModel(app
 
 
     fun updateDealersLocation(location: LatLng, dealer: Dealer, selectedImagefilePath: Uri, phoneNumber: String,isCam : Boolean): MutableLiveData<Dealer>{
-        return dealerRepository.updateDealerLocation(location,dealer,selectedImagefilePath,phoneNumber,isCam)
+        return dealerRepository.updateDealerLocationWithImage(location,dealer,selectedImagefilePath,phoneNumber,isCam)
     }
 
 
