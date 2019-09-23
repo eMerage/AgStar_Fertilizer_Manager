@@ -520,7 +520,9 @@ class DealerUnapprovedFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMar
         when (requestCode) {
             PICK_IMAGE_REQUEST -> when (resultCode) {
                 Activity.RESULT_OK -> try {
-                    Picasso.get().load(data!!.data).into(imageViewDealer)
+                    Picasso.get().load(data!!.data).
+                        resize(100,100).
+                        into(imageViewDealer)
                     selectedImagefilePath = data.data!!
 
 

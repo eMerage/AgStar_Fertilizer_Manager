@@ -4,9 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#088946</color>
 
-
+    <color name="coloryellow">#F7CA18</color>
 
     <color name="colorLightGreen">#99C844</color>
+
+
+
 
 
 </resources>

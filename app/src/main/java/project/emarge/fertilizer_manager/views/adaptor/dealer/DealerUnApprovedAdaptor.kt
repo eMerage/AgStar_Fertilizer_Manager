@@ -50,15 +50,19 @@ class DealerUnApprovedAdaptor(val items: ArrayList<Dealer>, val context: Context
         if(itemPostion.dealerLocationLan==0.0){
             holder.ImageViewLocationImage?.setImageResource(R.drawable.ic_round_red)
         }else{
-            holder.ImageViewLocationImage?.setImageResource(R.drawable.ic_round_light_green)
+            holder.ImageViewLocationImage?.setImageResource(R.drawable.ic_round_dark_green)
         }
 
 
-        if(itemPostion.dealerimageCode==""){
+        if((itemPostion.dealerimageCode=="") &&  (itemPostion.dealerImg=="")){
             holder.ImageViewImageImage?.setImageResource(R.drawable.ic_round_red)
+        }else if((itemPostion.dealerimageCode!="") &&  (itemPostion.dealerImg!="")){
+            holder.ImageViewImageImage?.setImageResource(R.drawable.ic_round_dark_green)
         }else{
-            holder.ImageViewImageImage?.setImageResource(R.drawable.ic_round_light_green)
+            holder.ImageViewImageImage?.setImageResource(R.drawable.ic_round_light_yellow)
         }
+
+
 
 
     }

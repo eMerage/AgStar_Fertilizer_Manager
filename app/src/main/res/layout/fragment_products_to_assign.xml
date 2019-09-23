@@ -21,11 +21,26 @@
 
 
 
+    <TextView
+        android:id="@+id/textview12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This feature is temporarily blocked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/colorPrimaryDark"
+        app:fontFamily="@font/roboto_bold"
+        android:textSize="16sp"/>
+
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/swiperefresh_producttoassigned"
             android:layout_width="match_parent"
+        android:visibility="gone"
             android:layout_height="match_parent">
 
         <ScrollView
