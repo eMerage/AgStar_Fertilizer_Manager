@@ -243,7 +243,7 @@ class VisitsRepo(application: Application) {
 
                     }
                     override fun onError(e: Throwable) {
-                        Toast.makeText(app, networkErrorHandler(e).errorMessage, Toast.LENGTH_LONG).show()
+
 
                     }
                     override fun onComplete() {

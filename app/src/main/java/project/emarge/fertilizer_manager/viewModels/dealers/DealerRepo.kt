@@ -184,7 +184,11 @@ class DealerRepo(application: Application) {
 
 
             if (selectedImagefilePath == Uri.EMPTY) {
+                jsonObject.addProperty("ImageCode", imageCode)
+                jsonObject.addProperty("ContactNo", phoneNumber)
 
+                jsonObject.addProperty("ImageTypeID",4)
+                jsonObject.addProperty("Name", "")
             } else {
                 imageCode = genarateImageCode()
                 dealer.dealerImage = selectedImagefilePath
@@ -219,15 +223,16 @@ class DealerRepo(application: Application) {
                     dealer.dealerImagePath = filePath
                 }
 
+
+                jsonObject.addProperty("ImageCode", imageCode)
+                jsonObject.addProperty("ContactNo", phoneNumber)
+
+                jsonObject.addProperty("ImageTypeID", 4)
+                jsonObject.addProperty("Name", dealer.dealerImageName)
+
             }
-            jsonObject.addProperty("ImageCode", imageCode)
-            jsonObject.addProperty("ContactNo", phoneNumber)
-
-            jsonObject.addProperty("ImageTypeID", 4)
-            jsonObject.addProperty("Name", dealer.dealerImageName)
 
 
-            println("yyyyyyyyyyyyyy : "+jsonObject)
 
             if(  (selectedImagefilePath != Uri.EMPTY)   &&   (filePath == "")  ){
                 Toast.makeText(app, "Image capture error,Please try again", Toast.LENGTH_LONG).show()
@@ -248,7 +253,11 @@ class DealerRepo(application: Application) {
 
                         override fun onComplete() {
                             data.postValue(dealerObject)
-                            savePaymentImage(dealer)
+                            if (selectedImagefilePath == Uri.EMPTY) {
+
+                            }else{
+                                savePaymentImage(dealer)
+                            }
 
                         }
                     })
@@ -402,8 +411,7 @@ class DealerRepo(application: Application) {
                 ob.addProperty("Name", dealer.dealerImageName)
                 locJsonArr.add(ob)
 
-                println("wwwwwwwwwwwwww ddddddd: "+locJsonArr)
-
+                
 
                 apiInterface.saveImageDetails(locJsonArr)
                         .subscribeOn(Schedulers.io())
@@ -446,7 +454,7 @@ class DealerRepo(application: Application) {
 
         apiInterface.saveImageFile(fileToUpload, dealer.dealerImageCode)
                 .subscribeOn(Schedulers.io())
-                .doOnError {   println("ssssssssssssss : saveImageFile  doOnError") }
+                .doOnError {   }
                 .doOnTerminate { }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<Image> {
@@ -454,17 +462,15 @@ class DealerRepo(application: Application) {
                     }
 
                     override fun onNext(log: Image) {
-                        println("ssssssssssssss : saveImageFile  onNext")
+
                     }
 
                     override fun onError(e: Throwable) {
-                        Toast.makeText(app, networkErrorHandler(e).errorMessage, Toast.LENGTH_LONG).show()
 
-                        println("ssssssssssssss : saveImageFile  onError "+e.message)
                     }
 
                     override fun onComplete() {
-                        println("ssssssssssssss : saveImageFile  onComplete")
+
                     }
                 })
 

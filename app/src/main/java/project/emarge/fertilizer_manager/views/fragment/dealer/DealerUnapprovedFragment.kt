@@ -280,47 +280,49 @@ class DealerUnapprovedFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMar
             startLocationUpdatesRefrash()
             dialogDealerLocation.dismiss()
         }
+
+
         textBtnUpdate.setOnClickListener {
-            if (currentLocation == null) {
-                Toast.makeText(context as Activity, "Please recheck your location", Toast.LENGTH_LONG).show()
-            } else {
+            if(dealer.dealerLocationLan == 0.0){
+                if (currentLocation == null) {
+                    Toast.makeText(context as Activity, "Please recheck your location", Toast.LENGTH_LONG).show()
+                } else {
+                    updateDealer(dealer,editTextNumber.text.toString())
 
-                var lastLocation = if(userChangedLocation==null){
-                    currentLocation
-                }else{
-                    userChangedLocation
                 }
-                pageViewModel!!.updateDealersLocation(
-                    lastLocation!!,
-                    selectedDealer,
-                    selectedImagefilePath,
-                    editTextNumber.text.toString(),
-                    isImageFromCamera
-                )
-                    .observe(this, Observer<Dealer> {
-                        it?.let { result ->
-                            if (!result.status) {
-                                showMessage(
-                                    result.loginNetworkError.errorTitle.toString(),
-                                    result.loginNetworkError.errorMessage.toString()
-                                )
-                            } else {
-                                Toast.makeText(context as Activity, "Dealer update successfully ", Toast.LENGTH_LONG).show()
-                                userChangedLocation = null
-                                selectedImagefilePath = Uri.EMPTY
-                                getDealers()
-                            }
 
-                            dialogDealerLocation.dismiss()
+            }else{
 
-                        }
+                val alertDialogBuilder = AlertDialog.Builder(context as Activity)
+                alertDialogBuilder.setTitle("Dealer's Location")
+                alertDialogBuilder.setMessage("Dealer's location already added,Do you want to change ?")
+                alertDialogBuilder.setPositiveButton(
+                    "YES"
+                ) { _, _ ->
+
+                    if (currentLocation == null) {
+                        Toast.makeText(context as Activity, "Please recheck your location", Toast.LENGTH_LONG).show()
+                    } else {
+                        updateDealer(dealer,editTextNumber.text.toString())
+
+                    }
+
+                }
+                alertDialogBuilder.setNegativeButton(
+                    "NO",
+                    DialogInterface.OnClickListener { _, _ ->
+                        currentLocation  = LatLng(
+                            dealer.dealerLocationLan!!,
+                            dealer.dealerLocationLon!!
+                        )
+
+                        updateDealer(dealer,editTextNumber.text.toString())
+
                     })
-
+                alertDialogBuilder.show()
             }
 
-
         }
-
 
 
         if (mapView != null) {
@@ -334,6 +336,43 @@ class DealerUnapprovedFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMar
 
 
         dialogDealerLocation.show()
+
+    }
+
+
+    private fun updateDealer(deler : Dealer,number : String){
+
+        var lastLocation = if(userChangedLocation==null){
+            currentLocation
+        }else{
+            userChangedLocation
+        }
+        pageViewModel.updateDealersLocation(
+            lastLocation!!,
+            selectedDealer,
+            selectedImagefilePath,
+            number,
+            isImageFromCamera
+        )
+            .observe(this, Observer<Dealer> {
+                it?.let { result ->
+                    if (!result.status) {
+                        showMessage(
+                            result.loginNetworkError.errorTitle.toString(),
+                            result.loginNetworkError.errorMessage.toString()
+                        )
+                    } else {
+                        Toast.makeText(context as Activity, "Dealer update successfully ", Toast.LENGTH_LONG).show()
+                        userChangedLocation = null
+                        selectedImagefilePath = Uri.EMPTY
+                        getDealers()
+                    }
+
+                    dialogDealerLocation.dismiss()
+
+                }
+            })
+
 
     }
 
